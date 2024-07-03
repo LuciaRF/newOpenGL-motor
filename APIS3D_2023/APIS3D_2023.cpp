@@ -1,15 +1,15 @@
-// APIS3D_2023.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
-//
-
 #include <iostream>
 #include "common.h"
 #include <math.h>
+#include "Mesh3D.h"
+#include "Entity.h"
 
-
+using namespace std;
 
 int main(int argc, char** argv)
 {
-
+    //En main solo va haber objetos de tipo Entity, Mesh3D deber�a sobrar
     std::cout << "Hello World!\n";
+
     return 0;
 }
