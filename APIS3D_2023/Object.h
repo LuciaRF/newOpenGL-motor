@@ -8,15 +8,16 @@ using namespace std;
 
 class Object: public Entity
 {
-	Mesh3D* mesh;
+protected:
+	Mesh3D mesh;
 	int tipo;
 
 public:
-	Mesh3D* getMesh();
-	void setMesh(Mesh3D* mesh);
+	virtual Mesh3D& getMesh() = 0;
+	virtual void setMesh(Mesh3D& mesh) = 0;
 
-	int getTipo();
-	void setTipo(int tipo);
+	virtual int getTipo() = 0;
+	virtual void setTipo(int tipo) = 0;
 
 	virtual void loadDataFromFile(string file) = 0;
 };

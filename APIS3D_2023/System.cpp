@@ -1,5 +1,4 @@
 #include "System.h"
-#include "TimeManager.h"
 
 Render* System::render = nullptr;
 InputManager* System::inputManager = nullptr;
@@ -30,15 +29,14 @@ void System::exit()
 
 void System::mainLoop()
 {
-	TimeManager t;
+	float deltaTime = 0.1f;
 
 	while (!end)
 	{
-		t.update();
 
 		for (Object* obj : *objects)
 		{
-			obj->step(t.deltaTime);
+			obj->step(deltaTime);
 		}
 		render->drawObjects(objects);
 	}

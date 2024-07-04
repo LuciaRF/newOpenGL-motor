@@ -10,6 +10,7 @@ class Render
 protected:
 	int width;
 	int height;
+
 public:
 	virtual int getWidth() = 0;
 	virtual void setWidth(int width) = 0;

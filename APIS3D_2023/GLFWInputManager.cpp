@@ -15,6 +15,8 @@ void GLFWInputManager::init()
 
 bool GLFWInputManager::isPressed(char key)
 {
+
+    //¿keyManager?
     //comprobar si hay alguna función que permita saber si la tecla está seleccionada
     return true;
 }

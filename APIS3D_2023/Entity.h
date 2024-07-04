@@ -12,19 +12,19 @@ protected:
     glm::mat4 modelMtx;
 
 public:
-    glm::vec4 getPosition();
-    void setPosition(glm::vec4 position);
+    virtual glm::vec4 getPosition() = 0;
+    virtual void setPosition(glm::vec4 position) = 0;
     
-    glm::vec4 getRotation();
-    void setRotation(glm::vec4 rotation);
+    virtual glm::vec4 getRotation() = 0;
+    virtual void setRotation(glm::vec4 rotation) = 0;
     
-    glm::vec4 getScaling();
-    void setScaling(glm::vec4 scaling);
+    virtual glm::vec4 getScaling() = 0;
+    virtual void setScaling(glm::vec4 scaling) = 0;
 
-    glm::mat4 getModelMtx();
-    void setModelMtx(glm::mat4 modelMtx);
+    virtual glm::mat4 getModelMtx() = 0;
+    virtual void setModelMtx(glm::mat4 modelMtx) = 0;
 
-    void computeModelMatrix();
+    virtual void computeModelMatrix() = 0;
 
     virtual void step(double deltaTime) = 0;
 };

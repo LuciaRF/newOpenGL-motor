@@ -2,11 +2,12 @@
 #define GLAD_ONLY_HEADERS
 #include <iostream>
 #include "common.h" 
-#include "Entity.h"
+#include "Object.h"
 #include "Render.h"
 
 class GL1Render : public Render
 {
+protected:
 	GLFWwindow* window;
 public:
 	GL1Render(int width, int height);

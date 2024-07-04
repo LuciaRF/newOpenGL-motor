@@ -53,10 +53,10 @@ void GL1Render::drawObjects(std::vector<Object*>* objs)
         glBegin(GL_TRIANGLES);
         //seteos de vertices y colores
 
-        Mesh3D* mesh = obj->getMesh();
+        Mesh3D mesh = obj->getMesh();
         glColor3f(1.0f,1.0f,1.0f);
 
-        for (auto vert : *mesh->getVertList())
+        for (auto vert : mesh.getVertList())
         {
             vert.pos = obj->getModelMtx() * vert.pos;
             glVertex3f(vert.pos.x, vert.pos.y, vert.pos.z);
@@ -69,5 +69,9 @@ void GL1Render::drawObjects(std::vector<Object*>* objs)
 
 bool GL1Render::isClosed()
 {
-    return true;
+    //comprobar si se ha cerrado o no la ventana
+    if (glfwWindowShouldClose(window))
+        return true;
+    else
+        return false;
 }
