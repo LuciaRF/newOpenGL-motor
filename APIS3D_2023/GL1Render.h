@@ -7,8 +7,6 @@
 
 class GL1Render : public Render
 {
-protected:
-	GLFWwindow* window;
 public:
 	GL1Render(int width, int height);
 
@@ -16,10 +14,12 @@ public:
 	void setWidth(int width) override;
 	int getHeight() override;
 	void setHeight(int height) override;
+	GLFWwindow* getWindow() override;
+	void setWindow(GLFWwindow* window) override;
 
 	void init() override;
-	void setupObject(Object* obj) override;
-	void removeObject(Object* obj) override;
+	void setupObject(Object& obj) override;
+	void removeObject(Object& obj) override;
 	void drawObjects(std::vector<Object*>* objs) override;
 	bool isClosed() override;
 };

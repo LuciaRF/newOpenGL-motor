@@ -1,13 +1,17 @@
 #pragma once
 #define GLAD_ONLY_HEADERS
-#include "common.h" 
+#include "common.h"
+#include <iostream>
 #include "InputManager.h"
 
 class GLFWInputManager : public InputManager
 {
 public:
-	void init() override;
-	bool isPressed(char key) override;
 	
+	//static void keyManager(GLFWwindow* window, int key, int scancode, int action, int
+	//	mods);
+
+	void init() override;
+	bool isPressed(char key);
 };
 

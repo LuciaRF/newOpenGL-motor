@@ -7,8 +7,8 @@ bool System::end = false;
 
 void System::initSystem()
 {
-	FactoryEngine::setSelectedGraphicsBackend (FactoryEngine::GL1);
-	FactoryEngine::setSelectedInputBackend(FactoryEngine::GLFW);
+	//FactoryEngine::setSelectedGraphicsBackend (FactoryEngine::GL1);
+	//FactoryEngine::setSelectedInputBackend(FactoryEngine::GLFW);
 
 	render = FactoryEngine::getNewRender();
 	inputManager = FactoryEngine::getNewInputManager();
@@ -30,6 +30,7 @@ void System::exit()
 void System::mainLoop()
 {
 	float deltaTime = 0.1f;
+	std::cout << "Llega a system" << endl;
 
 	while (!end)
 	{
@@ -39,5 +40,7 @@ void System::mainLoop()
 			obj->step(deltaTime);
 		}
 		render->drawObjects(objects);
+		glfwSwapBuffers(render->getWindow()); //Hace falta la ventana
+		exit();
 	}
 }

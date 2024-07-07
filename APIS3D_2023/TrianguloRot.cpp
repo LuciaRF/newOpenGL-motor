@@ -1,5 +1,4 @@
 #include "TrianguloRot.h"
-#include <iostream>
 
 TrianguloRot::TrianguloRot()
 {
@@ -25,8 +24,6 @@ void TrianguloRot::step(double deltaTime)
 {
 	float velocity = 0.05f;
 	glm::vec4 rotacionTriangulo = getRotation();
-	std::cout << rotacionTriangulo.y << endl;
 	rotacionTriangulo.y += deltaTime * velocity;
 	setRotation(rotation);
-	std::cout << rotacionTriangulo.y << endl;
 }

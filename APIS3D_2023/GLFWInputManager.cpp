@@ -1,23 +1,32 @@
 #include "GLFWInputManager.h"
 
+
+//void GLFWInputManager::keyManager(GLFWwindow* window, int key, int scancode, int action, int
+//    mods)
+//{
+//    switch (action)
+//    {
+//    case GLFW_PRESS:
+//        cout << "Tecla apretada" << endl;
+//        keybEvent[key] = true;
+//        break;
+//    case GLFW_RELEASE:
+//        cout << "Tecla levantada" << endl;
+//        keybEvent[key] = false;
+//        break;
+//    }
+//}
+
 void GLFWInputManager::init()
 {
-	int posX, posY;
-	int oldPosX, oldPosY;
-
     for (int i = 0; i < GLFW_KEY_LAST; i++)
     {
         keybEvent[i] = false;
     }
-    posX = posY = oldPosX = oldPosY = 0;
-
+   // glfwSetKeyCallback(window, keyManager);   
 }
-
 bool GLFWInputManager::isPressed(char key)
 {
-
-    //¿keyManager?
-    //comprobar si hay alguna función que permita saber si la tecla está seleccionada
     return true;
 }
 

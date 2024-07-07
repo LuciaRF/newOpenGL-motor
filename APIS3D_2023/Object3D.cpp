@@ -50,12 +50,12 @@ void Object3D::computeModelMatrix()
 	model = glm::rotate(model, rotation.z, glm::vec3(0.0f, 0.0f, 1.0f));
 	model = glm::scale(model, glm::vec3(scaling));
 
-	this->modelMtx = model;
+	this->modelMtx = model;// el seteado se hace con setModelMtx??
 }
 
 void Object3D::step(double deltaTime)
 {
-	//todavía me queda saber que tiene que hacer step
+	//El step lo modifica la clase del objeto que herede
 }
 
 //Object

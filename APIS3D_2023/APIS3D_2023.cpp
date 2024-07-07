@@ -3,6 +3,8 @@
 #include <math.h>
 #include "Mesh3D.h"
 #include "TrianguloRot.h"
+#include "FactoryEngine.h"
+#include "System.h"
 
 using namespace std;
 
@@ -34,7 +36,16 @@ int main(int argc, char** argv)
     std::cout << "\nEl ID de la mesh2: ";
     std::cout << myMesh2->getMeshID() << endl;
 
+    FactoryEngine::setSelectedGraphicsBackend(FactoryEngine::GL1);
+    FactoryEngine::setSelectedInputBackend(FactoryEngine::GLFW);
+    System::initSystem();
+
     TrianguloRot triangulo;
     triangulo.step(0.1f);
-    return 0;
+    System::addObject(&triangulo);
+
+    System::mainLoop();
+
+    glfwTerminate();
+
 }

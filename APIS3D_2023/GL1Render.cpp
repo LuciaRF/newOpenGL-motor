@@ -1,4 +1,4 @@
-#include "GL1Render.h"
+ #include "GL1Render.h"
 
 GL1Render::GL1Render(int width, int height)
 {
@@ -6,7 +6,6 @@ GL1Render::GL1Render(int width, int height)
     this->height = height;
     window = nullptr;
 }
-
 int GL1Render::getWidth()
 {
     return width;
@@ -26,22 +25,35 @@ void GL1Render::setHeight(int height)
     this->height = height;
 }
 
+GLFWwindow* GL1Render::getWindow()
+{
+    return window;
+}
+void  GL1Render::setWindow(GLFWwindow* window)
+{
+    this->window = window;
+}
+
 void GL1Render::init()
 {
     if (!glfwInit())
     {
         cout << "ERROR GLWFINIT" << endl;
     }
+    window = glfwCreateWindow(this->width, this->height, "Triangulo", nullptr, nullptr);
+
+    glfwMakeContextCurrent(window);
+    gladLoadGL(glfwGetProcAddress);
 }
 
-void GL1Render::setupObject(Object* obj)
+void GL1Render::setupObject(Object& obj)
 {
-
+    /*Setea datos en GPU: todavía no se implementa*/
 }
 
-void GL1Render::removeObject(Object* obj)
+void GL1Render::removeObject(Object& obj)
 {
-
+    /*Setea datos en GPU: todavía no se implementa*/
 }
 
 void GL1Render::drawObjects(std::vector<Object*>* objs)
@@ -63,7 +75,6 @@ void GL1Render::drawObjects(std::vector<Object*>* objs)
         }
 
         glEnd();
-
     }
 }
 

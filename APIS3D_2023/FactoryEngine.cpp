@@ -50,6 +50,6 @@ InputManager* FactoryEngine::getNewInputManager()
 bool FactoryEngine::isClosed() /*Devolverá “true” en caso de haberse cerrado la ventana
 de glfw*/
 {
-	//!glfwWindowShouldClose(window) o glfwTerminate();
+	
 	return true;
 }
