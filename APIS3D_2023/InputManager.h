@@ -7,13 +7,13 @@
 
 using namespace std;
 
-class InputManager //: public GL1Render //Eventos de teclado y ratón
+class InputManager
 {
-protected:
-	map<int, bool> keybEvent;
-
 public:
 	virtual void init() = 0;
 	virtual bool isPressed(char key) = 0;
+
+protected:
+	static map<int, bool> keybEvent;
 };
 

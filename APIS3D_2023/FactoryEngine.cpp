@@ -1,7 +1,7 @@
 #include "FactoryEngine.h"
 
-FactoryEngine::GraphicsBackend FactoryEngine::selectedGraphicsBackend = FactoryEngine::GL1;
-FactoryEngine::InputBackend FactoryEngine::selectedInputBackend = FactoryEngine::GLFW;
+FactoryEngine::GraphicsBackend FactoryEngine::selectedGraphicsBackend = FactoryEngine::defaultGraphics;
+FactoryEngine::InputBackend FactoryEngine::selectedInputBackend = FactoryEngine::defaultInput;
 
 FactoryEngine::GraphicsBackend FactoryEngine::getSelectedGraphicsBackend()
 {
@@ -50,6 +50,7 @@ InputManager* FactoryEngine::getNewInputManager()
 bool FactoryEngine::isClosed() /*Devolverá “true” en caso de haberse cerrado la ventana
 de glfw*/
 {
+
+	return (System::render)->isClosed();
 	
-	return true;
 }

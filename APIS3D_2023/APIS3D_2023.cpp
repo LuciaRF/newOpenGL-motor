@@ -1,7 +1,6 @@
 #include <iostream>
 #include "common.h"
 #include <math.h>
-#include "Mesh3D.h"
 #include "TrianguloRot.h"
 #include "FactoryEngine.h"
 #include "System.h"
@@ -10,11 +9,7 @@ using namespace std;
 
 int main(int argc, char** argv)
 {
-    //En main solo va haber objetos de tipo Entity, Mesh3D debería sobrar
-    std::cout << "Hello Lucia!\n\n";
-    std::cout << "A continuacion va un Mesh3D default\n";
-
-    Mesh3D meshClass;
+   /* Mesh3D meshClass;
     vector<vertex_t>& vertices = meshClass.getVertList();
 
     Mesh3D * myMesh = new Mesh3D();
@@ -34,18 +29,16 @@ int main(int argc, char** argv)
     std::cout << "\nEl ID de la mesh1: ";
     std::cout << myMesh->getMeshID();
     std::cout << "\nEl ID de la mesh2: ";
-    std::cout << myMesh2->getMeshID() << endl;
+    std::cout << myMesh2->getMeshID() << endl;*/
 
     FactoryEngine::setSelectedGraphicsBackend(FactoryEngine::GL1);
     FactoryEngine::setSelectedInputBackend(FactoryEngine::GLFW);
     System::initSystem();
 
     TrianguloRot triangulo;
+    triangulo.setPosition(glm::vec4(0.0f, 0.0f, 0.0f, 1.0f));
     triangulo.step(0.1f);
     System::addObject(&triangulo);
 
     System::mainLoop();
-
-    glfwTerminate();
-
 }

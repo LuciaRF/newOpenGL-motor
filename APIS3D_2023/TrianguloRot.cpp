@@ -1,4 +1,5 @@
 #include "TrianguloRot.h"
+#include "iostream"
 
 TrianguloRot::TrianguloRot()
 {
@@ -25,5 +26,10 @@ void TrianguloRot::step(double deltaTime)
 	float velocity = 0.05f;
 	glm::vec4 rotacionTriangulo = getRotation();
 	rotacionTriangulo.y += deltaTime * velocity;
-	setRotation(rotation);
+	setRotation(rotacionTriangulo);
+
+	if (System::inputManager->isPressed(GLFW_KEY_E))
+	{
+		System::exit();
+	}
 }

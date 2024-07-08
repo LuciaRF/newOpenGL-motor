@@ -2,8 +2,9 @@
 #define GLAD_ONLY_HEADERS
 #include <string>
 #include "common.h"
-#include "GL1Render.h"
+#include "Render.h"
 #include "GLFWInputManager.h"
+#include "System.h"
 using namespace std;
 
 class FactoryEngine
@@ -11,10 +12,12 @@ class FactoryEngine
 public:
 
 	enum GraphicsBackend {
+		defaultGraphics,
 		GL1
 	};
 
 	enum InputBackend {
+		defaultInput,
 		GLFW
 	};
 
