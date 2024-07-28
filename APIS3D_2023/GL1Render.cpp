@@ -1,11 +1,11 @@
  #include "GL1Render.h"
 
-GL1Render::GL1Render(int width, int height)
+GL1Render::GL1Render(int width, int height) 
 {
-    this->width = width;
     this->height = height;
-    window = nullptr;
+    this->width = width;
 }
+
 int GL1Render::getWidth()
 {
     return width;

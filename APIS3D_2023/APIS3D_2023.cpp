@@ -1,9 +1,6 @@
-#include <iostream>
 #include "common.h"
-#include <math.h>
 #include "TrianguloRot.h"
 #include "FactoryEngine.h"
-#include "System.h"
 
 using namespace std;
 
@@ -36,6 +33,8 @@ int main(int argc, char** argv)
     System::initSystem();
 
     TrianguloRot triangulo;
+    TrianguloRot triangulo2;
+
     triangulo.setPosition(glm::vec4(0.0f, 0.0f, 0.0f, 1.0f));
     triangulo.step(0.1f);
     System::addObject(&triangulo);

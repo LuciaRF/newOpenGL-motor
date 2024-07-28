@@ -3,7 +3,7 @@
 #include "Entity.h"
 #include "common.h" 
 #include "Mesh3D.h"
-#include <string>
+
 using namespace std;
 
 class Object: public Entity

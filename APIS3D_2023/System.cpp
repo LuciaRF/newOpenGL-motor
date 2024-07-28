@@ -7,16 +7,11 @@ bool System::end = false;
 
 void System::initSystem()
 {
-	FactoryEngine::setSelectedGraphicsBackend(FactoryEngine::GL1);
-	FactoryEngine::setSelectedInputBackend(FactoryEngine::GLFW);
-
 	render = FactoryEngine::getNewRender();
 	inputManager = FactoryEngine::getNewInputManager();
 
 	render->init();
 	inputManager->init();
-
-
 }
 
 void System::addObject(Object* obj)
@@ -44,6 +39,7 @@ void System::mainLoop()
 
 		for (auto& obj : *objects)
 		{
+			System::setModelMatrix(obj->getModelMtx());
 			obj->step(deltaTime);
 			System::render->drawObjects(objects);
 		}
@@ -57,4 +53,14 @@ void System::mainLoop()
 		glfwPollEvents();
 	}
 	glfwTerminate();
+}
+
+glm::mat4 System::getModelMatrix()
+{
+	return modelMatrix;
+}
+
+void System::setModelMatrix(glm::mat4 Matrix)
+{
+	System::modelMatrix = Matrix;
 }

@@ -25,9 +25,13 @@ Render* FactoryEngine::getNewRender()
 {
 	int width = 640; //Esto imagino que habrá alguna forma mejor de poner los width y height
 	int height = 480;
-	if (FactoryEngine::selectedGraphicsBackend == GL1)
+	if (FactoryEngine::selectedGraphicsBackend == FactoryEngine::GL1)
 	{
 		return new GL1Render(width, height);
+	}
+	else if (FactoryEngine::selectedGraphicsBackend == FactoryEngine::GL4)
+	{
+		return new GL4Render(width, height);
 	}
 	else
 	{
@@ -53,4 +57,12 @@ de glfw*/
 
 	return (System::render)->isClosed();
 	
+}
+
+Material* FactoryEngine::getNewMaterial()
+{
+	if (FactoryEngine::selectedGraphicsBackend == FactoryEngine::GL4)
+	{
+		return new GLSLMaterial();
+	}
 }

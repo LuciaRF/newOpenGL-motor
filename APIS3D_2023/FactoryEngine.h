@@ -1,10 +1,12 @@
 #pragma once
 #define GLAD_ONLY_HEADERS
-#include <string>
 #include "common.h"
 #include "Render.h"
 #include "GLFWInputManager.h"
 #include "System.h"
+#include "GL4Render.h"
+#include "GLSLMaterial.h"
+
 using namespace std;
 
 class FactoryEngine
@@ -13,7 +15,8 @@ public:
 
 	enum GraphicsBackend {
 		defaultGraphics,
-		GL1
+		GL1,
+		GL4
 	};
 
 	enum InputBackend {
@@ -31,6 +34,8 @@ public:
 	static InputManager* getNewInputManager();
 
 	static bool isClosed();
+
+	static Material* getNewMaterial();
 
 private:
 	static GraphicsBackend selectedGraphicsBackend;

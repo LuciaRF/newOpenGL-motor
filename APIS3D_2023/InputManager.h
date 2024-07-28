@@ -1,9 +1,6 @@
 #pragma once
 #define GLAD_ONLY_HEADERS
 #include "common.h"
-#include "GL1Render.h"
-#include <math.h>
-#include <map>
 
 using namespace std;
 

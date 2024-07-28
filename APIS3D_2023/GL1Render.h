@@ -1,6 +1,5 @@
 #pragma once
 #define GLAD_ONLY_HEADERS
-#include <iostream>
 #include "common.h" 
 #include "Object.h"
 #include "Render.h"

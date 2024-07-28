@@ -1,7 +1,6 @@
 #pragma once
 #define GLAD_ONLY_HEADERS
 #include "common.h"
-#include <iostream>
 #include "InputManager.h"
 #include "System.h"
 

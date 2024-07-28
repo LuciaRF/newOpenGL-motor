@@ -7,7 +7,8 @@ void GLFWInputManager::init()
     {
         keybEvent[i] = false;
     }
-    GLFWwindow* window = System::render->getWindow();
+    GLFWwindow* window = nullptr;
+    window = System::render->getWindow();
     glfwSetKeyCallback(window, keyManager);
 }
 bool GLFWInputManager::isPressed(char key)
