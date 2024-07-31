@@ -62,19 +62,38 @@ void GL1Render::drawObjects(std::vector<Object*>* objs)
     {
         obj->computeModelMatrix();
 
-        glBegin(GL_TRIANGLES);
-        //seteos de vertices y colores
+        /*CPU*/
 
-        Mesh3D mesh = obj->getMesh();
-        glColor3f(1.0f,1.0f,1.0f);
+        //glBegin(GL_TRIANGLES);
+        ////seteos de vertices y colores
 
-        for (auto vert : mesh.getVertList())
-        {
-            vert.pos = obj->getModelMtx() * vert.pos;
-            glVertex3f(vert.pos.x, vert.pos.y, vert.pos.z);
-        }
+        //Mesh3D mesh = obj->getMesh();
+        //glColor3f(1.0f,1.0f,1.0f);
 
-        glEnd();
+        //for (auto vert : mesh.getVertList())
+        //{
+        //    vert.pos = obj->getModelMtx() * vert.pos;
+        //    glVertex3f(vert.pos.x, vert.pos.y, vert.pos.z);
+        //}
+
+        //glEnd();
+
+        /*GPU*/
+
+        glPushMatrix();
+        glMultMatrixf(&(obj->getModelMtx()[0][0]));
+
+        glEnableClientState(GL_VERTEX_ARRAY);
+        glVertexPointer(3, GL_FLOAT, sizeof(vertex_t), obj->getMesh().getVertList().data());
+       
+        /* glEnableClientState(GL_COLOR_ARRAY);
+        glColorPointer(4, GL_FLOAT, sizeof(vertex_t), &(p.vertices.data()->color));*/
+       
+        glDrawElements(GL_TRIANGLES, obj->getMesh().getvTriangleIdxList()->size(), GL_UNSIGNED_INT, obj->getMesh().getvTriangleIdxList()->data());
+        glDisableClientState(GL_VERTEX_ARRAY);
+        //glDisableClientState(GL_COLOR_ARRAY);
+
+        glPopMatrix();
     }
 }
 

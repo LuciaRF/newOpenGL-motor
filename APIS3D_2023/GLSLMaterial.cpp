@@ -34,7 +34,7 @@ void GLSLMaterial::prepare()
 
    /* glEnableVertexAttribArray(p.prg->varList["vcolor"]);
     glVertexAttribPointer(p.prg->varList["vcolor"], 4, GL_FLOAT, GL_FALSE, sizeof(vertex_t), (void*)(sizeof(glm::vec4)));*/ //ultimo param: lo que ocupe vpos
-
+    auto model = System::getModelMatrix();
     program->setMatrix("mMat", System::getModelMatrix());
 }
 

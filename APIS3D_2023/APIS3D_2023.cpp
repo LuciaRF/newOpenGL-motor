@@ -28,15 +28,15 @@ int main(int argc, char** argv)
     std::cout << "\nEl ID de la mesh2: ";
     std::cout << myMesh2->getMeshID() << endl;*/
 
-    FactoryEngine::setSelectedGraphicsBackend(FactoryEngine::GL1);
+    FactoryEngine::setSelectedGraphicsBackend(FactoryEngine::GL4);
     FactoryEngine::setSelectedInputBackend(FactoryEngine::GLFW);
     System::initSystem();
 
     TrianguloRot triangulo;
-    TrianguloRot triangulo2;
+    //TrianguloRot triangulo2;
 
-    triangulo.setPosition(glm::vec4(0.0f, 0.0f, 0.0f, 1.0f));
-    triangulo.step(0.1f);
+    triangulo.setPosition(glm::vec4(0.0f, 0.5f, 0.0f, 1.0f));
+ 
     System::addObject(&triangulo);
 
     System::mainLoop();

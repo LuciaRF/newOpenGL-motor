@@ -17,6 +17,7 @@ void System::initSystem()
 void System::addObject(Object* obj)
 {
 	objects->push_back(obj);
+	//render->setupObject(*obj);
 }
 
 void System::exit()
@@ -29,17 +30,21 @@ void System::mainLoop()
 	float newTime = 0;
 	float deltaTime = 0;
 	float lastTime = 0;
-	newTime = static_cast<float>(glfwGetTime());
-	deltaTime = newTime - lastTime;
-	lastTime = newTime;
+
+	for (auto& obj : *objects)
+	{
+		render->setupObject(*obj);
+	}
 
 	while (!end)
 	{
 		glClear(GL_COLOR_BUFFER_BIT);
+		newTime = static_cast<float>(glfwGetTime());
+		deltaTime = newTime - lastTime;
+		lastTime = newTime;
 
 		for (auto& obj : *objects)
 		{
-			System::setModelMatrix(obj->getModelMtx());
 			obj->step(deltaTime);
 			System::render->drawObjects(objects);
 		}

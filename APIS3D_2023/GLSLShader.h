@@ -7,12 +7,6 @@
 
 class GLSLShader : public RenderProgram
 {
-protected:
-
-	
-	//std::vector<Shader*> shaderList;
-	
-
 public:
 	void setProgram(std::string  programSrc, renderTypes_e type) override;
 	void linkPrograms() override;
