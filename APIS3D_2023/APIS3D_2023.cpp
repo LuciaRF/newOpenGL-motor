@@ -35,7 +35,7 @@ int main(int argc, char** argv)
     TrianguloRot triangulo;
     //TrianguloRot triangulo2;
 
-    triangulo.setPosition(glm::vec4(0.0f, 0.5f, 0.0f, 1.0f));
+    triangulo.setPosition(glm::vec4(0.0f, 0.0f, 0.0f, 1.0f));
  
     System::addObject(&triangulo);
 
