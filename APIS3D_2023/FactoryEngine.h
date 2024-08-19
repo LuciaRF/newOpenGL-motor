@@ -37,6 +37,8 @@ public:
 
 	static Material* getNewMaterial();
 
+	static Texture* getNewTexture();
+
 private:
 	static GraphicsBackend selectedGraphicsBackend;
 	static InputBackend selectedInputBackend;

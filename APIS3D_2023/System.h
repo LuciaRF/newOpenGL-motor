@@ -2,6 +2,7 @@
 #define GLAD_ONLY_HEADERS
 #include "common.h"
 #include "FactoryEngine.h"
+#include "Camera.h"
 
 class System
 {
@@ -13,9 +14,7 @@ public:
 	static bool end; // Variable para indicar si se debe acabar la ejecución
 	inline static glm::mat4 modelMatrix;
 
-	//static glm::mat4 ModelMatrix; /* Contiene la matriz modelo del objeto que 
-//se está renderizando actualmente */
-
+	inline static Camera* camera;
 
 	static void initSystem();
 	static void addObject(Object* obj);
@@ -24,5 +23,8 @@ public:
 
 	static glm::mat4 getModelMatrix();
 	static void setModelMatrix(glm::mat4 ModelMatrix);
+
+	static Camera* getCamera();
+	static void setCamera(Camera* cam);
 };
 

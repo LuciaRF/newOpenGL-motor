@@ -69,3 +69,13 @@ void System::setModelMatrix(glm::mat4 Matrix)
 {
 	System::modelMatrix = Matrix;
 }
+
+Camera* System::getCamera()
+{
+	return camera;
+}
+
+void System::setCamera(Camera* cam)
+{
+	camera = cam;
+}

@@ -14,5 +14,8 @@ public:
 
 	RenderProgram* getProgram() override;
 	void setProgram(RenderProgram* prg) override;
+
+	Texture* getTexture() override;
+	void setTexture(Texture* texture) override;
 };
 

@@ -66,3 +66,12 @@ Material* FactoryEngine::getNewMaterial()
 		return new GLSLMaterial();
 	}
 }
+
+Texture* FactoryEngine::getNewTexture()
+{
+	if (FactoryEngine::selectedGraphicsBackend == FactoryEngine::GL1  || 
+		FactoryEngine::selectedGraphicsBackend == FactoryEngine::GL4)
+	{
+		//return new GLTexture();
+	}
+}

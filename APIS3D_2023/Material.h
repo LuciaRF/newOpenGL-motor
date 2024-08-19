@@ -3,6 +3,7 @@
 #include "common.h"
 #include "GLSLShader.h"
 #include "Shader.h".
+#include "GLTexture.h"
 
 class Material
 {
@@ -13,6 +14,8 @@ nuestro caso, shaders). ¡¡OJO!! Deberá ser inicializado por el constructor de la
 clase que implemente un Material setea prID? */
 	std::vector<std::string> listProgramSrc;
 	std::vector<renderTypes_e> listType;
+
+	Texture* texture;
 public:
 	virtual void addSrc(std::string programName, renderTypes_e type) = 0;
 	virtual void loadPrograms() = 0;
@@ -21,5 +24,8 @@ public:
 
 	virtual RenderProgram* getProgram() = 0;
 	virtual void setProgram(RenderProgram* prg) = 0;
+
+	virtual Texture* getTexture();
+	virtual void setTexture(Texture* texture);
 }; 
 

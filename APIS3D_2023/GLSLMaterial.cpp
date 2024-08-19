@@ -36,6 +36,8 @@ void GLSLMaterial::prepare()
     glVertexAttribPointer(p.prg->varList["vcolor"], 4, GL_FLOAT, GL_FALSE, sizeof(vertex_t), (void*)(sizeof(glm::vec4)));*/ //ultimo param: lo que ocupe vpos
     auto model = System::getModelMatrix();
     program->setMatrix("mMat", System::getModelMatrix());
+
+    //modificar para hacer el uso de texturas
 }
 
 RenderProgram* GLSLMaterial::getProgram()
@@ -45,5 +47,15 @@ RenderProgram* GLSLMaterial::getProgram()
 void GLSLMaterial::setProgram(RenderProgram* prg)
 {
     program = prg;
+}
+
+Texture* GLSLMaterial::getTexture()
+{
+    return texture;
+}
+
+void GLSLMaterial::setTexture(Texture* texture)
+{
+    this->texture = texture;
 }
 
