@@ -16,7 +16,7 @@ protected:
 	glm::vec3 colorRGB; //color básico de la malla
 	vector<vertex_t>* vVertList; //Lista vértices que forman la malla
 
-	Material* mat;
+	Material* material;
 	vector<unsigned int>* vTriangleIdxList; /*Lista de identificadores de 
 vértices, cada triplete de identificadores serán un triángulo*/
 

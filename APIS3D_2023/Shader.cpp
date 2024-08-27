@@ -49,8 +49,6 @@ void Shader::compileShader()
 
 void Shader::checkErrors()
 {
-	GLint retCode;
-	char errorLog[1024];
 	GLint fragment_compiled;
 	glGetShaderiv(shId, GL_COMPILE_STATUS, &fragment_compiled);
 	if (fragment_compiled != GL_TRUE)

@@ -19,11 +19,14 @@ public:
 
     void computeModelMatrix() override;
 
-    void step(double deltaTime) override;
+    void step(float deltaTime) override;
 
     //Object
 
-    Mesh3D& getMesh() override;
+    //Mesh3D& getMesh() override;
+    //void setMesh(Mesh3D& mesh) override;
+
+    vector<Mesh3D*>& getMeshes() override;
     void setMesh(Mesh3D& mesh) override;
 
     int getTipo() override;

@@ -53,22 +53,32 @@ void Object3D::computeModelMatrix()
 	this->modelMtx = model;// el seteado se hace con setModelMtx??
 }
 
-void Object3D::step(double deltaTime)
+void Object3D::step(float deltaTime)
 {
 	//El step lo modifica la clase del objeto que herede
 }
 
 //Object
 
-Mesh3D& Object3D::getMesh()
+//Mesh3D& Object3D::getMesh()
+//{
+//	return this->mesh;
+//}
+//
+//void Object3D::setMesh(Mesh3D& mesh)
+//{
+//	this->mesh = mesh;
+//
+//}
+
+vector<Mesh3D*>& Object3D::getMeshes()
 {
-	return this->mesh;
+	return meshes;
 }
 
 void Object3D::setMesh(Mesh3D& mesh)
 {
-	this->mesh = mesh;
-
+	meshes.push_back(&mesh); //lo de & habría que mirarlo
 }
 
 int Object3D::getTipo()
@@ -79,7 +89,6 @@ int Object3D::getTipo()
 void Object3D::setTipo(int tipo)
 {
 	this->tipo = tipo;
-
 }
 
 void Object3D::loadDataFromFile(string file)

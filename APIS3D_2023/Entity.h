@@ -26,6 +26,6 @@ public:
 
     virtual void computeModelMatrix() = 0;
 
-    virtual void step(double deltaTime) = 0;
+    virtual void step(float deltaTime) = 0;
 };
 

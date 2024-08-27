@@ -1,7 +1,7 @@
 #pragma once
 #define GLAD_ONLY_HEADERS
 #include "common.h"
-#include "Camera.h"
+//#include "GLFWInputManager.h"
 #include "System.h"
 
 /*
@@ -10,6 +10,9 @@ Esta clase implementará una cámara que permitirá moverla usando eventos de tecla
 
 class CameraKeyboard :public Camera
 {
-	void step(float timestep) override;
+public:
+	CameraKeyboard(ProjectionType type, glm::vec3 position, glm::vec3 up, glm::vec3 lookAt);
+
+	void step(float deltaTime) override;
 };
 

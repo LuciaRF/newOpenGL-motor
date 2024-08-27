@@ -10,11 +10,34 @@ void GLFWInputManager::init()
     GLFWwindow* window = nullptr;
     window = System::render->getWindow();
     glfwSetKeyCallback(window, keyManager);
+    glfwSetCursorPosCallback(window, mouseManager);
 }
 bool GLFWInputManager::isPressed(char key)
 {
-    //std::cout << "Entra en isPressed: "<< keybEvent[key] << endl;
     return keybEvent[key];
+}
+
+int GLFWInputManager::getMouseX()
+{
+    return mouseX;
+}
+
+
+int GLFWInputManager::getMouseY()
+{
+    return mouseY;
+}
+
+
+void GLFWInputManager::mouseManager(GLFWwindow* window, double xpos, double ypos)
+{
+    oldMouseX = mouseX;
+    oldMouseY = mouseY;
+
+    mouseX = (int)xpos;
+    mouseY = (int)ypos;
+
+    //cout << "Posición " << xpos << " " << ypos << "\n";
 }
 
 void GLFWInputManager::keyManager(GLFWwindow* window, int key, int scancode, int action, int

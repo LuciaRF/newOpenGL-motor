@@ -21,10 +21,10 @@ void FactoryEngine::setSelectedInputBackend(InputBackend inputBackend)
 	FactoryEngine::selectedInputBackend = inputBackend;
 }
 
-Render* FactoryEngine::getNewRender()
+Render* FactoryEngine::getNewRender(int width, int height)
 {
-	int width = 640; //Esto imagino que habrá alguna forma mejor de poner los width y height
-	int height = 480;
+	//int width = 640; //Esto imagino que habrá alguna forma mejor de poner los width y height
+	//int height = 480;
 	if (FactoryEngine::selectedGraphicsBackend == FactoryEngine::GL1)
 	{
 		return new GL1Render(width, height);
@@ -65,13 +65,21 @@ Material* FactoryEngine::getNewMaterial()
 	{
 		return new GLSLMaterial();
 	}
+	else
+	{
+		throw "No seleccionado GL4";
+	}
 }
 
-Texture* FactoryEngine::getNewTexture()
+Texture* FactoryEngine::getNewTexture(const char* fileName)
 {
 	if (FactoryEngine::selectedGraphicsBackend == FactoryEngine::GL1  || 
 		FactoryEngine::selectedGraphicsBackend == FactoryEngine::GL4)
 	{
-		//return new GLTexture();
+		return new GLTexture(fileName);
+	}
+	else
+	{
+		throw "No seleccionado GL1-GL4";
 	}
 }

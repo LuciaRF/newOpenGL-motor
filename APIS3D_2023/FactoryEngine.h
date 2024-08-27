@@ -6,6 +6,7 @@
 #include "System.h"
 #include "GL4Render.h"
 #include "GLSLMaterial.h"
+#include "GLTexture.h"
 
 using namespace std;
 
@@ -30,17 +31,18 @@ public:
 	static InputBackend getSelectedInputBackend();
 	static void setSelectedInputBackend(InputBackend selectedInputBackend);
 
-	static Render* getNewRender();
+	static Render* getNewRender(int width, int height);
 	static InputManager* getNewInputManager();
 
 	static bool isClosed();
 
 	static Material* getNewMaterial();
 
-	static Texture* getNewTexture();
+	static Texture* getNewTexture(const char* fileName);
 
 private:
 	static GraphicsBackend selectedGraphicsBackend;
 	static InputBackend selectedInputBackend;
+
 };
 

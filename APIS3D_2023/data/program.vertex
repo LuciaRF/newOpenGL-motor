@@ -1,9 +1,18 @@
 #version 330
 
 uniform mat4 mMat;    
-in vec4 vPos;
+//in vec4 vPos;
+
+attribute vec4 vPos;
+attribute vec4 vcolor;
+attribute vec2 vtextcoord;
+
+out vec4 fcolor;
+out vec2 ftextcoord;
 
 void main()  
 {  
-gl_Position=mMat*vPos;  
+	gl_Position=mMat*vPos;
+	fcolor = vcolor;
+	ftextcoord = vtextcoord;
 } 

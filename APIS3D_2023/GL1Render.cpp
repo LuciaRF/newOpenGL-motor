@@ -61,6 +61,7 @@ void GL1Render::drawObjects(std::vector<Object*>* objs)
     for (auto& obj : *objs) //esto utiliza copia o el original
     {
         obj->computeModelMatrix();
+        //System::setModelMatrix(obj->getModelMtx());
 
         /*CPU*/
 
@@ -80,16 +81,26 @@ void GL1Render::drawObjects(std::vector<Object*>* objs)
 
         /*GPU*/
 
+        int cont = (int) obj->getMeshes().size();
+
         glPushMatrix();
         glMultMatrixf(&(obj->getModelMtx()[0][0]));
 
         glEnableClientState(GL_VERTEX_ARRAY);
-        glVertexPointer(3, GL_FLOAT, sizeof(vertex_t), obj->getMesh().getVertList().data());
-       
+
+        for (int i = 0; i < cont; i++)
+        {
+            glVertexPointer(3, GL_FLOAT, sizeof(vertex_t), obj->getMeshes()[i]->getVertList().data());
+        }
         /* glEnableClientState(GL_COLOR_ARRAY);
         glColorPointer(4, GL_FLOAT, sizeof(vertex_t), &(p.vertices.data()->color));*/
        
-        glDrawElements(GL_TRIANGLES, obj->getMesh().getvTriangleIdxList()->size(), GL_UNSIGNED_INT, obj->getMesh().getvTriangleIdxList()->data());
+        for (int i = 0; i < cont; i++)
+        {
+            glDrawElements(GL_TRIANGLES, obj->getMeshes()[i]->getvTriangleIdxList()->size(),
+                GL_UNSIGNED_INT, obj->getMeshes()[i]->getvTriangleIdxList()->data());
+        }
+
         glDisableClientState(GL_VERTEX_ARRAY);
         //glDisableClientState(GL_COLOR_ARRAY);
 

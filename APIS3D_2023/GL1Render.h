@@ -3,6 +3,7 @@
 #include "common.h" 
 #include "Object.h"
 #include "Render.h"
+//#include "System.h"
 
 class GL1Render : public Render
 {

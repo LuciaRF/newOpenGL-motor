@@ -20,7 +20,7 @@ Mesh3D::Mesh3D()
 
 	//addTriangle(0, 1, 2);
 
-	mat = nullptr;
+	material = nullptr;
 }
 
 int Mesh3D::getMeshID()
@@ -42,12 +42,12 @@ vector<vertex_t>& Mesh3D::getVertList()
 
 Material* Mesh3D::getMaterial()
 {
-	return mat;
+	return material;
 }
 
 void Mesh3D::setMaterial(Material* mat)
 {
-	this->mat = mat;
+	this->material = mat;
 }
 
 std::vector<unsigned int>* Mesh3D::getvTriangleIdxList()

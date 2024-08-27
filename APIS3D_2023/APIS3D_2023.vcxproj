@@ -142,6 +142,7 @@
     <ClCompile Include="APIS3D_2023.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CameraKeyboard.cpp" />
+    <ClCompile Include="CubeTex.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="FactoryEngine.cpp" />
     <ClCompile Include="GL1Render.cpp" />
@@ -166,6 +167,7 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CameraKeyboard.h" />
     <ClInclude Include="common.h" />
+    <ClInclude Include="CubeTex.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="FactoryEngine.h" />
     <ClInclude Include="GL1Render.h" />
@@ -183,6 +185,7 @@
     <ClInclude Include="RenderProgram.h" />
     <ClInclude Include="renderTypes_e.h" />
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="stb_image.h" />
     <ClInclude Include="System.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TrianguloRot.h" />

@@ -84,7 +84,7 @@ void GLSLShader::setupShaderVarList()
 podría cambiar por la de clase*/
 {
 	//std::map<renderTypes_e, unsigned int> programs; ??
-	std::map <std::string, unsigned int > programVarList;
+	//std::map <std::string, unsigned int > programVarList;
 	int count = 0;
 	int bufSize = 100;
 	char* name = new char[bufSize];
@@ -98,7 +98,7 @@ podría cambiar por la de clase*/
 	{
 		glGetActiveAttrib(prId, (GLuint)i, bufSize, &length, &size, &type,
 			name);
-		programVarList[std::string(name)] = glGetAttribLocation(prId, name);
+		varList[std::string(name)] = glGetAttribLocation(prId, name);
 	}
 		glGetProgramiv(prId, GL_ACTIVE_UNIFORMS, &count);
 	printf("Active Uniforms: %d\n", count);
@@ -106,7 +106,7 @@ podría cambiar por la de clase*/
 	{
 		glGetActiveUniform(prId, (GLuint)i, bufSize, &length, &size,
 			&type, name);
-		programVarList[std::string(name)] = glGetUniformLocation(prId,
+		varList[std::string(name)] = glGetUniformLocation(prId,
 			name);
 	}
 }

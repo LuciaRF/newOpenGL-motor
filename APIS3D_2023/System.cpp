@@ -5,9 +5,10 @@ InputManager* System::inputManager = nullptr;
 std::vector<Object*>* System::objects = new std::vector<Object*>();
 bool System::end = false;
 
-void System::initSystem()
+void System::initSystem(int width, int height)
 {
-	render = FactoryEngine::getNewRender();
+
+	render = FactoryEngine::getNewRender(width,height);
 	inputManager = FactoryEngine::getNewInputManager();
 
 	render->init();
@@ -43,6 +44,8 @@ void System::mainLoop()
 		deltaTime = newTime - lastTime;
 		lastTime = newTime;
 
+		camera->step(deltaTime);
+
 		for (auto& obj : *objects)
 		{
 			obj->step(deltaTime);
@@ -65,9 +68,9 @@ glm::mat4 System::getModelMatrix()
 	return modelMatrix;
 }
 
-void System::setModelMatrix(glm::mat4 Matrix)
+void System::setModelMatrix(glm::mat4 ModelMatrix)
 {
-	System::modelMatrix = Matrix;
+	System::modelMatrix = ModelMatrix;
 }
 
 Camera* System::getCamera()
@@ -77,5 +80,5 @@ Camera* System::getCamera()
 
 void System::setCamera(Camera* cam)
 {
-	camera = cam;
+	System::camera = cam;
 }

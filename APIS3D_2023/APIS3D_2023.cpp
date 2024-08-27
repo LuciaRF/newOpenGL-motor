@@ -1,6 +1,8 @@
 #include "common.h"
 #include "TrianguloRot.h"
+#include "CubeTex.h"
 #include "FactoryEngine.h"
+#include "CameraKeyboard.h"
 
 using namespace std;
 
@@ -28,16 +30,30 @@ int main(int argc, char** argv)
     std::cout << "\nEl ID de la mesh2: ";
     std::cout << myMesh2->getMeshID() << endl;*/
 
+    int width = 640;
+    int height = 480;
+
     FactoryEngine::setSelectedGraphicsBackend(FactoryEngine::GL4);
     FactoryEngine::setSelectedInputBackend(FactoryEngine::GLFW);
-    System::initSystem();
+    System::initSystem(width, height);
 
-    TrianguloRot triangulo;
+    //TrianguloRot triangulo;
     //TrianguloRot triangulo2;
 
-    triangulo.setPosition(glm::vec4(0.0f, 0.0f, 0.0f, 1.0f));
- 
-    System::addObject(&triangulo);
+    //triangulo.setPosition(glm::vec4(0.0f, 0.0f, 0.0f, 1.0f));
+    //System::addObject(&triangulo);
+
+    CubeTex cube("data/front.png");
+    cube.setPosition(glm::vec4(0.0f, 0.0f, 0.0f, 1.0f));
+    System::addObject(&cube);
+
+    auto type = Camera::ProjectionType::Perspective;
+
+    CameraKeyboard camera(type, glm::vec3(0.0f, 0.0f, 3.0f),
+        glm::vec3(0.0f, 1.0f, 0.0f),
+        glm::vec3(cube.getPosition()));
+
+    System::setCamera(&camera);
 
     System::mainLoop();
 }

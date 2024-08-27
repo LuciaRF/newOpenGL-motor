@@ -2,8 +2,7 @@
 #define GLAD_ONLY_HEADERS
 #include "common.h"
 #include "GLSLShader.h"
-#include "Shader.h".
-#include "GLTexture.h"
+#include "Texture.h"
 
 class Material
 {
@@ -25,7 +24,7 @@ public:
 	virtual RenderProgram* getProgram() = 0;
 	virtual void setProgram(RenderProgram* prg) = 0;
 
-	virtual Texture* getTexture();
-	virtual void setTexture(Texture* texture);
+	virtual Texture* getTexture() = 0;
+	virtual void setTexture(Texture* texture) = 0;
 }; 
 

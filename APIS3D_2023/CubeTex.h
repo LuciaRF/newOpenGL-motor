@@ -6,12 +6,12 @@
 #include "renderTypes_e.h"
 #include "Mesh3D.h"
 
-class TrianguloRot : public Object3D
+class CubeTex : public Object3D
 {
 public:
-	//TrianguloRot* triangulo = new TrianguloRot();
-	TrianguloRot();
+	CubeTex(const char* fileName);
 
 	void step(float deltaTime) override;
+
 };
 

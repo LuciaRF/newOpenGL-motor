@@ -7,7 +7,13 @@
 class GLFWInputManager : public InputManager
 {
 public:
-	
+	inline static int mouseX, mouseY;
+	inline static int oldMouseX, oldMouseY;
+
+	static int getMouseX();
+	static int getMouseY();
+	static void mouseManager(GLFWwindow* window, double xpos, double ypos);
+
 	static void keyManager(GLFWwindow* window, int key, int scancode, int action, int
 		mods);
 
