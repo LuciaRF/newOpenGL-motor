@@ -91,7 +91,8 @@ void Object3D::setTipo(int tipo)
 	this->tipo = tipo;
 }
 
-void Object3D::loadDataFromFile(string file)
+void Object3D::loadDataFromFile(const char* fileName)
 {
 
 }
+

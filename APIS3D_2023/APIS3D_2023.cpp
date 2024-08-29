@@ -49,7 +49,7 @@ int main(int argc, char** argv)
 
     auto type = Camera::ProjectionType::Perspective;
 
-    CameraKeyboard camera(type, glm::vec3(0.0f, 0.0f, 3.0f),
+    CameraKeyboard camera(type, glm::vec3(0.0f, 1.0f, 3.0f),
         glm::vec3(0.0f, 1.0f, 0.0f),
         glm::vec3(cube.getPosition()));
 

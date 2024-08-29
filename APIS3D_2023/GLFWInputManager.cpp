@@ -11,33 +11,34 @@ void GLFWInputManager::init()
     window = System::render->getWindow();
     glfwSetKeyCallback(window, keyManager);
     glfwSetCursorPosCallback(window, mouseManager);
+
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    glfwSetCursorPos(window, 0.0, 0.0);
 }
 bool GLFWInputManager::isPressed(char key)
 {
     return keybEvent[key];
 }
 
-int GLFWInputManager::getMouseX()
-{
-    return mouseX;
-}
-
-
-int GLFWInputManager::getMouseY()
-{
-    return mouseY;
-}
+//int GLFWInputManager::getMouseX()
+//{
+//    return mouseX;
+//}
+//
+//
+//int GLFWInputManager::getMouseY()
+//{
+//    return mouseY;
+//}
 
 
 void GLFWInputManager::mouseManager(GLFWwindow* window, double xpos, double ypos)
 {
-    oldMouseX = mouseX;
-    oldMouseY = mouseY;
+    oldPosX = posX;
+    oldPosY = posY;
+    posX = (int)xpos;
+    posY = (int)ypos;
 
-    mouseX = (int)xpos;
-    mouseY = (int)ypos;
-
-    //cout << "Posición " << xpos << " " << ypos << "\n";
 }
 
 void GLFWInputManager::keyManager(GLFWwindow* window, int key, int scancode, int action, int

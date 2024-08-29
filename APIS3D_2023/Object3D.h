@@ -1,5 +1,7 @@
 #pragma once
+#define GLAD_ONLY_HEADERS
 #include "Object.h"
+#include "pugixml.hpp"
 class Object3D : public Object
 {
 public:
@@ -32,6 +34,6 @@ public:
     int getTipo() override;
     void setTipo(int tipo) override;
 
-    void loadDataFromFile(string file) override;
-};
+    void loadDataFromFile(const char* fileName) override;
 
+};

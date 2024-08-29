@@ -11,7 +11,6 @@ void CameraKeyboard::step(float deltaTime)
 		la posición de la cámara
 	*/
 
-	static double prevX = 0, prevY = 0;
 	float speedMX = 0;
 	float speedMY = 0;
 	glm::vec4 position = getPosition();
@@ -30,14 +29,15 @@ void CameraKeyboard::step(float deltaTime)
 
 	//ROTATION
 
-	//speedMX = prevX - GLFWInputManager::getMouseX();
-	//prevX = GLFWInputManager::getMouseX();
-	//rotation.y += speedMX * 0.001f;
+	speedMY = prevY - GLFWInputManager::posY;
+	prevY = GLFWInputManager::posY;
+	rotation.x += speedMY * 0.001f; //mover el ratón
 
-	//speedMY = prevY - GLFWInputManager::getMouseY();
-	//prevY = GLFWInputManager::getMouseY();
-	//rotation.x += speedMY * 0.001f;
-	//setRotation(rotation);
+	speedMX = prevX - GLFWInputManager::posX;
+	prevX = GLFWInputManager::posX;
+	rotation.y += speedMX * 0.001f; //mover el ratón
+
+	setRotation(rotation);
 
 	glm::vec3 lookAt = glm::rotate(glm::mat4(1.0f), rotation.y, glm::vec3(0.0f, 1.0f, 0.0f))*
 		glm::rotate(glm::mat4(1.0f), rotation.x, glm::vec3(1.0f, 0.0f, 0.0f))*

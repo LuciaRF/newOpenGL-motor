@@ -18,7 +18,6 @@ void System::initSystem(int width, int height)
 void System::addObject(Object* obj)
 {
 	objects->push_back(obj);
-	//render->setupObject(*obj);
 }
 
 void System::exit()

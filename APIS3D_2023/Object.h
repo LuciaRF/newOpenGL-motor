@@ -23,6 +23,6 @@ public:
 	virtual int getTipo() = 0;
 	virtual void setTipo(int tipo) = 0;
 
-	virtual void loadDataFromFile(string file) = 0;
+	virtual void loadDataFromFile(const char* fileName) = 0;
 };
 
