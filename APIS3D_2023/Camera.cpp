@@ -1,4 +1,5 @@
 #include "Camera.h"
+#include "System.h"
 
 Camera::Camera(ProjectionType type, glm::vec3 position, glm::vec3 up, glm::vec3 lookAt)
 {
@@ -54,8 +55,13 @@ glm::vec3 Camera::getRadio()
 
 void Camera::computeProjectionMatrix()
 {
+    float width = System::render->getWidth();
+    float height = System::render->getHeight();
+    float resolution = width / height; //640.0f/480.0f
+
     projection = glm::perspective(glm::radians(getAngle()), 
-        640.0f/480.0f, 0.1f, 100.0f);
+        resolution, 0.1f, 100.0f);
+   
     //lo de render del tamaño habría que ver si lo hace bien HAY QUE PONER LO DE LA VENTANA WINDOW
 }
 

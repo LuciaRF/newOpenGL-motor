@@ -2,7 +2,8 @@
 #define GLAD_ONLY_HEADERS
 #include "common.h"
 #include "Entity.h"
-//#include "System.h"
+
+class System; //Forward declaration para evitar dependencia circular ES NECESARIO AÑADIR EL #include System en el cpp
 
 class Camera : public Entity
 {
