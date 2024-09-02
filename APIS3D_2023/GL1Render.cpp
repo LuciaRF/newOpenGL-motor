@@ -40,7 +40,7 @@ void GL1Render::init()
     {
         cout << "ERROR GLWFINIT" << endl;
     }
-    window = glfwCreateWindow(this->width, this->height, "Triangulo", nullptr, nullptr);
+    window = glfwCreateWindow(this->width, this->height, "Practica", nullptr, nullptr);
 
     glfwMakeContextCurrent(window);
     gladLoadGL(glfwGetProcAddress);

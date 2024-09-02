@@ -38,7 +38,9 @@ void System::mainLoop()
 
 	while (!end)
 	{
-		glClear(GL_COLOR_BUFFER_BIT);
+		// Limpiar buffer color y de profundidad
+		//glClear(GL_COLOR_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		newTime = static_cast<float>(glfwGetTime());
 		deltaTime = newTime - lastTime;
 		lastTime = newTime;

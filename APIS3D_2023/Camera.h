@@ -27,8 +27,11 @@ public:
 	Camera(ProjectionType type,glm::vec3 position, glm::vec3 up, glm::vec3 lookAt);
 
 	glm::mat4 getProjection();
+
 	glm::mat4 getView();
 	void setView(glm::mat4 view);
+
+	glm::vec3 getLookAt();
 	void setLookAt(glm::vec3 lookAt);
 
 	float getAngle();

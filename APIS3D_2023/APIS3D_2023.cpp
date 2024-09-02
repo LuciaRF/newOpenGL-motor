@@ -44,8 +44,8 @@ int main(int argc, char** argv)
     //System::addObject(&triangulo);
 
     //CubeTex cube;
-    //CubeTex cube("data/asian_town.msh");
-    CubeTex cube("data/lightCube.msh");
+    //CubeTex cube("data/lightCube.msh");
+    CubeTex cube("data/asian_town.msh");
     cube.setPosition(glm::vec4(0.0f, 0.0f, 0.0f, 1.0f));
     System::addObject(&cube);
 
@@ -57,8 +57,8 @@ int main(int argc, char** argv)
 
     auto type = Camera::ProjectionType::Perspective;
 
-    CameraKeyboard camera(type, glm::vec3(0.0f, 1.0f, 3.0f),
-        glm::vec3(0.0f, 1.0f, 0.0f),
+    CameraKeyboard camera(type, positionCamera,
+        glm::vec3(0.0f, 2.0f, 0.0f),
         glm::vec3(cube.getPosition()));
 
     System::setCamera(&camera);

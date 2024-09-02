@@ -43,6 +43,11 @@ void Camera::setView(glm::mat4 view)
     this->view = view;
 }
 
+glm::vec3 Camera::getLookAt()
+{
+    return lookAt;
+}
+
 void Camera::setLookAt(glm::vec3 lookAt)
 {
     this->lookAt = lookAt;
@@ -63,9 +68,10 @@ void Camera::computeProjectionMatrix()
     float width = System::render->getWidth();
     float height = System::render->getHeight();
     float resolution = width / height; //640.0f/480.0f
+    float nearPlane = 0.01f;
 
     projection = glm::perspective(glm::radians(getAngle()), 
-        resolution, 0.1f, 100.0f);
+        resolution, nearPlane, 100.0f);
    
     //lo de render del tamaño habría que ver si lo hace bien HAY QUE PONER LO DE LA VENTANA WINDOW
 }
