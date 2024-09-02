@@ -2,6 +2,8 @@
 #define GLAD_ONLY_HEADERS
 #include "Object.h"
 #include "pugixml.hpp"
+#include "GLTexture.h"
+#include "FactoryEngine.h"
 class Object3D : public Object
 {
 public:
@@ -36,4 +38,5 @@ public:
 
     void loadDataFromFile(const char* fileName) override;
 
+    string extractPath(std::string filename);
 };

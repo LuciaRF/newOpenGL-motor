@@ -192,10 +192,14 @@
     <ClInclude Include="vertex_t.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="cuadrado.msh" />
+    <None Include="data\asian_town.msh" />
+    <None Include="data\lightCube.msh" />
     <None Include="data\program.fragment" />
     <None Include="data\program.vertex" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="data\asian_town.png" />
     <Image Include="data\front.png" />
     <Image Include="data\top.png" />
   </ItemGroup>

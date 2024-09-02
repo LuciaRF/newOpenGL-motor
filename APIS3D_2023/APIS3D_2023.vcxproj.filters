@@ -171,12 +171,24 @@
     <None Include="data\program.vertex">
       <Filter>data</Filter>
     </None>
+    <None Include="data\lightCube.msh">
+      <Filter>data</Filter>
+    </None>
+    <None Include="cuadrado.msh">
+      <Filter>data</Filter>
+    </None>
+    <None Include="data\asian_town.msh">
+      <Filter>data</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="data\front.png">
       <Filter>data</Filter>
     </Image>
     <Image Include="data\top.png">
+      <Filter>data</Filter>
+    </Image>
+    <Image Include="data\asian_town.png">
       <Filter>data</Filter>
     </Image>
   </ItemGroup>

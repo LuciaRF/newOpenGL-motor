@@ -23,7 +23,7 @@ public:
 	virtual void init() = 0;
 	virtual void setupObject(Object& obj) = 0;
 	virtual void removeObject(Object& obj) = 0;
-	virtual void drawObjects(std::vector<Object*>* objs) = 0; // OJO: Estos objetos
+	virtual void drawObjects(Object* obj) = 0; // OJO: Estos objetos
 	//deben haberse inicializado antes usando el método “setupObject”
 	virtual bool isClosed() = 0;
 };

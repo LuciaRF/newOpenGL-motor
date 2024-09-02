@@ -91,8 +91,94 @@ void Object3D::setTipo(int tipo)
 	this->tipo = tipo;
 }
 
-void Object3D::loadDataFromFile(const char* fileName)
-{
-
+template <typename T> //sirve para dividir las , de la lista de msh
+std::vector<T> splitString(const std::string& str, char delim) {
+    std::vector<T> elems;
+    std::stringstream sstream(str);
+    std::string item;
+    T tipoDato;
+    if (str != "") {
+        while (std::getline(sstream, item, delim))
+        {
+            std::istringstream str(item);
+            str >> tipoDato;
+            elems.push_back(tipoDato);
+        }
+    }
+    return elems;
 }
 
+void Object3D::loadDataFromFile(const char* fileName)
+{
+    string pathFileName = extractPath(fileName);
+
+    pugi::xml_document doc;
+    pugi::xml_parse_result result = doc.load_file(fileName);
+    if (result)
+    {
+        pugi::xml_node buffersNode = doc.child("mesh").child("buffers");
+
+        for (pugi::xml_node bufferNode = buffersNode.child("buffer");
+            bufferNode;
+            bufferNode = bufferNode.next_sibling("buffer"))
+        {
+            Mesh3D* mesh = new Mesh3D();
+
+            //Iteramos por todos los buffers
+            Texture* texture = new GLTexture(bufferNode.child("material").child("texture").text().as_string());
+            Material* material = FactoryEngine::getNewMaterial();
+            material->setTexture(texture);
+
+            auto textureName = bufferNode.child("material").child("texture").text().as_string();
+
+            material->addSrc(bufferNode.child("material").child("vShader").text().as_string(), renderTypes_e::vertex);
+            material->addSrc(bufferNode.child("material").child("fShader").text().as_string(), renderTypes_e::fragment);
+            material->loadPrograms();
+
+            mesh->setMaterial(material);
+
+            std::vector<float> vList = splitString<float>(bufferNode.child("coords").text().as_string(), ',');
+            std::vector<float> tcList = splitString<float>(bufferNode.child("texCoords").text().as_string(), ',');
+
+            auto coord = vList.begin();
+            auto texCoord = tcList.begin();
+
+            while (coord != vList.end() && texCoord != tcList.end())
+            {
+                vertex_t v;
+                v.pos.x = *coord++;
+                v.pos.y = *coord++;
+                v.pos.z = *coord++;
+                v.pos.w = 1.0f;
+
+                v.vText.x = *texCoord++;
+                v.vText.y = *texCoord++;
+
+                v.color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
+
+                mesh->addVertex(v);
+            }
+
+            vector<unsigned int> indices = splitString<unsigned int>(bufferNode.child("indices").text().as_string(), ',');
+            mesh->setvTriangleIdxList(indices);
+            setMesh(*mesh);
+        }
+    }
+    else
+    {
+        //No se ha ppodido cargar
+        std::cout << result.description() << std::endl;
+    }
+}
+
+
+
+string Object3D::extractPath(std::string filename) {
+    while (filename.find('\\') != std::string::npos)
+        filename.replace(filename.find('\\'), 1, 1, '/');
+    size_t pos = filename.rfind('/');
+    if (pos == std::string::npos) return "";
+    filename = filename.substr(0, pos);
+    if (filename.size() > 0) filename += '/';
+    return filename;
+}

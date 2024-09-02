@@ -16,7 +16,7 @@ Mesh3D::Mesh3D()
 
 	vVertList = new std::vector<vertex_t>();
 
-	vTriangleIdxList = new std::vector<unsigned int>();
+	//vTriangleIdxList = new std::vector<unsigned int>();
 
 	//addTriangle(0, 1, 2);
 
@@ -48,19 +48,19 @@ void Mesh3D::setMaterial(Material* mat)
 	this->material = mat;
 }
 
-std::vector<unsigned int>* Mesh3D::getvTriangleIdxList()
+std::vector<unsigned int> Mesh3D::getvTriangleIdxList()
 {
 	return vTriangleIdxList;
 }
 
-void Mesh3D::setvTriangleIdxList(std::vector<unsigned int>* vTriangleIdxList)
+void Mesh3D::setvTriangleIdxList(vector<unsigned int> vTriangleIdxList)
 {
 	this->vTriangleIdxList = vTriangleIdxList;
 }
 
 void Mesh3D::addTriangle(unsigned int vId1, unsigned int vId2, unsigned int vId3)
 {
-	vTriangleIdxList->push_back(vId1);
-	vTriangleIdxList->push_back(vId2);
-	vTriangleIdxList->push_back(vId3);
+	vTriangleIdxList.push_back(vId1);
+	vTriangleIdxList.push_back(vId2);
+	vTriangleIdxList.push_back(vId3);
 }

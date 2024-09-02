@@ -28,6 +28,7 @@ public:
 
 	glm::mat4 getProjection();
 	glm::mat4 getView();
+	void setView(glm::mat4 view);
 	void setLookAt(glm::vec3 lookAt);
 
 	float getAngle();

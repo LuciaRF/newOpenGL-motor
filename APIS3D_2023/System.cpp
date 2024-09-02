@@ -48,7 +48,7 @@ void System::mainLoop()
 		for (auto& obj : *objects)
 		{
 			obj->step(deltaTime);
-			System::render->drawObjects(objects);
+			System::render->drawObjects(obj);
 		}
 		
 		glfwSwapBuffers(System::render->getWindow()); 

@@ -24,8 +24,8 @@ void GL4Render::setupObject(Object& obj)
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbo.idxbo);
 
 
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * mesh->getvTriangleIdxList()->size(),
-             mesh->getvTriangleIdxList()->data(), GL_STATIC_DRAW);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * mesh->getvTriangleIdxList().size(),
+             mesh->getvTriangleIdxList().data(), GL_STATIC_DRAW);
 
         bufferObjectList[mesh->getMeshID()] = vbo;
         
@@ -38,35 +38,31 @@ void GL4Render::removeObject(Object& obj)
 
 }
 
-void GL4Render::drawObjects(std::vector<Object*>* objs)
+void GL4Render::drawObjects(Object* obj)
 {
-    for (auto& obj : *objs)
-    {
         //actualizar matriz modelo
         obj->computeModelMatrix();
-        int cont = (int)obj->getMeshes().size();
+        //int cont = (int)obj->getMeshes().size();
 
-        auto model = obj->getModelMtx();
+        //auto model = obj->getModelMtx();
         System::setModelMatrix(obj->getModelMtx());
         
         //System::setModelMatrix(obj->getModelMtx());
         //activar buffers (en el render porque son los shaders)
-
-        for (int i = 0; i < cont; i++)
+        for (auto mesh : obj->getMeshes())
+        //for (int i = 0; i < cont; i++)
         {
-            boIDS_t buffer = this->bufferObjectList[obj->getMeshes()[i]->getMeshID()];
+            boIDS_t buffer = this->bufferObjectList[mesh->getMeshID()];
 
             glBindVertexArray(buffer.id);
             glBindBuffer(GL_ARRAY_BUFFER, buffer.vbo);
             glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffer.idxbo);
 
-            obj->getMeshes()[i]->getMaterial()->prepare(); //setea program use y las variables atributo
+            mesh->getMaterial()->prepare(); //setea program use y las variables atributo
 
-            glDrawElements(GL_TRIANGLES, obj->getMeshes()[i]->getvTriangleIdxList()->size(),
+            glDrawElements(GL_TRIANGLES, mesh->getvTriangleIdxList().size(),
                 GL_UNSIGNED_INT, nullptr);
         }
-
-    }
 }
 
 

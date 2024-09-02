@@ -1,6 +1,6 @@
 #include "CubeTex.h"
 
-CubeTex::CubeTex(const char* fileName)
+CubeTex::CubeTex()
 {
 	Mesh3D* cubo1 = new Mesh3D(); 
 	setMesh(*cubo1);
@@ -125,7 +125,7 @@ CubeTex::CubeTex(const char* fileName)
 
 	if (FactoryEngine::getSelectedGraphicsBackend() == FactoryEngine::GL4)
 	{
-		Texture * texture = FactoryEngine::getNewTexture(fileName); //revisar si ya se hace solo
+		Texture* texture = FactoryEngine::getNewTexture("data/front.png"); //revisar si ya se hace solo
 		getMeshes()[0]->setMaterial(FactoryEngine::getNewMaterial());
 		getMeshes()[0]->getMaterial()->setTexture(texture);
 
@@ -143,6 +143,15 @@ CubeTex::CubeTex(const char* fileName)
 	}
 }
 
+CubeTex::CubeTex(const char* fileName)
+{
+	loadDataFromFile(fileName);
+	setPosition(glm::vec4(0.0f, 0.0f, 0.0f, 1.0f));
+	setRotation(glm::vec4(0.0f, 0.0f, 0.0f, 1.0f));
+	setScaling(glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
+	setModelMtx(glm::mat4(1.0f));
+}
+
 void CubeTex::step(float deltaTime)
 {
 	if (System::inputManager->isPressed(GLFW_KEY_E))
@@ -150,73 +159,3 @@ void CubeTex::step(float deltaTime)
 		System::exit();
 	}
 }
-
-//void Object3D::loadDataFromFile(const char* fileName)
-//{
-//	pugi::xml_document doc;
-//	pugi::xml_parse_result result = doc.load_file(fileName);
-//	if (result)
-//	{
-//		pugi::xml_node buffersNode = doc.child("mesh").child("buffers");
-//
-//		for (pugi::xml_node bufferNode = buffersNode.child("buffer");
-//			bufferNode;
-//			bufferNode = bufferNode.next_sibling("buffer"))
-//		{
-//			//Iteramos por todos los buffers
-//			this->text = new texture(bufferNode.child("material").child("texture").text().as_string());
-//
-//			this->prg = new program();
-//			this->prg->addShader(bufferNode.child("material").child("vShader").text().as_string());
-//			this->prg->addShader(bufferNode.child("material").child("fShader").text().as_string());
-//
-//			this->prg->linkProgram();
-//
-//			std::vector<float> vList = splitString<float>(bufferNode.child("coords").text().as_string(), ',');
-//			std::vector<float> tcList = splitString<float>(bufferNode.child("texCoords").text().as_string(), ',');
-//
-//			auto coord = vList.begin();
-//			auto texCoord = tcList.begin();
-//
-//			while (coord != vList.end() && texCoord != tcList.end())
-//			{
-//				vertex_t v;
-//				v.pos.x = *coord++;
-//				v.pos.y = *coord++;
-//				v.pos.z = *coord++;
-//				v.pos.w = 1.0f;
-//
-//				v.textCoord.x = *texCoord++;
-//				v.textCoord.y = *texCoord++;
-//
-//				v.color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
-//
-//				this->vertices.push_back(v);
-//			}
-//
-//			this->indexes = splitString<unsigned int>(bufferNode.child("indices").text().as_string(), ',');
-//		}
-//	}
-//	else
-//	{
-//		//No se ha podido cargar
-//		std::cout << result.description() << std::endl;
-//	}
-//}
-//
-//template <typename T> //sirve para dividir las , de la lista de msh
-//std::vector<T> splitString(const std::string& str, char delim) {
-//	std::vector<T> elems;
-//	std::stringstream sstream(str);
-//	std::string item;
-//	T tipoDato;
-//	if (str != "") {
-//		while (std::getline(sstream, item, delim))
-//		{
-//			std::istringstream str(item);
-//			str >> tipoDato;
-//			elems.push_back(tipoDato);
-//		}
-//	}
-//	return elems;
-//}

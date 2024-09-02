@@ -56,10 +56,8 @@ void GL1Render::removeObject(Object& obj)
     /*Setea datos en GPU: todavía no se implementa*/
 }
 
-void GL1Render::drawObjects(std::vector<Object*>* objs)
+void GL1Render::drawObjects(Object* obj)
 {
-    for (auto& obj : *objs) //esto utiliza copia o el original
-    {
         obj->computeModelMatrix();
         //System::setModelMatrix(obj->getModelMtx());
 
@@ -97,15 +95,14 @@ void GL1Render::drawObjects(std::vector<Object*>* objs)
        
         for (int i = 0; i < cont; i++)
         {
-            glDrawElements(GL_TRIANGLES, obj->getMeshes()[i]->getvTriangleIdxList()->size(),
-                GL_UNSIGNED_INT, obj->getMeshes()[i]->getvTriangleIdxList()->data());
+            glDrawElements(GL_TRIANGLES, obj->getMeshes()[i]->getvTriangleIdxList().size(),
+                GL_UNSIGNED_INT, obj->getMeshes()[i]->getvTriangleIdxList().data());
         }
 
         glDisableClientState(GL_VERTEX_ARRAY);
         //glDisableClientState(GL_COLOR_ARRAY);
 
         glPopMatrix();
-    }
 }
 
 bool GL1Render::isClosed()

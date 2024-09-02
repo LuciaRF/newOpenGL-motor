@@ -18,6 +18,6 @@ public:
 	GL4Render(int width, int height);
 	void setupObject(Object& obj) override;
 	void removeObject(Object& obj) override;
-	void drawObjects(std::vector<Object*>* objs) override;
+	void drawObjects(Object* obj) override;
 };
 

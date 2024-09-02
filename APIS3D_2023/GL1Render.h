@@ -20,7 +20,7 @@ public:
 	void init() override;
 	void setupObject(Object& obj) override;
 	void removeObject(Object& obj) override;
-	void drawObjects(std::vector<Object*>* objs) override;
+	void drawObjects(Object* obj) override;
 	bool isClosed() override;
 };
 

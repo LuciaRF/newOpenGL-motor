@@ -38,6 +38,11 @@ glm::mat4 Camera::getView()
     return view;
 }
 
+void Camera::setView(glm::mat4 view)
+{
+    this->view = view;
+}
+
 void Camera::setLookAt(glm::vec3 lookAt)
 {
     this->lookAt = lookAt;
@@ -67,7 +72,8 @@ void Camera::computeProjectionMatrix()
 
 void Camera::computeViewMatrix()
 {
-    this->view = glm::lookAt((glm::vec3)position, lookAt, up); //calcula matriz vista
+    setView(glm::lookAt((glm::vec3)position, lookAt, up)); //calcula matriz vista
+    view;
 }
 
 glm::vec4 Camera::getRotation()

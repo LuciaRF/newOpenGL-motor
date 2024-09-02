@@ -43,9 +43,17 @@ int main(int argc, char** argv)
     //triangulo.setPosition(glm::vec4(0.0f, 0.0f, 0.0f, 1.0f));
     //System::addObject(&triangulo);
 
-    CubeTex cube("data/front.png");
+    //CubeTex cube;
+    //CubeTex cube("data/asian_town.msh");
+    CubeTex cube("data/lightCube.msh");
     cube.setPosition(glm::vec4(0.0f, 0.0f, 0.0f, 1.0f));
     System::addObject(&cube);
+
+    //Asian Town
+
+    //CubeTex cube("data/asian_town.msh");
+    glm::vec3 positionCamera = glm::vec3(0.12f, 0.013f, 0.142f);
+    //cube.setPosition(glm::vec4(0.0f, 0.0f, 0.0f, 1.0f));
 
     auto type = Camera::ProjectionType::Perspective;
 

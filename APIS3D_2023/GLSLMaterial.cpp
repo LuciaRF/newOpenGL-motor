@@ -41,8 +41,8 @@ void GLSLMaterial::prepare()
     
     glEnableVertexAttribArray(program->getVarList()["vtextcoord"]);
     glVertexAttribPointer(program->getVarList()["vtextcoord"], 2, GL_FLOAT, GL_FALSE,
-        sizeof(vertex_t), (void*)(sizeof(glm::vec4) + sizeof(glm::vec4)));
-        //sizeof(vertex_t), (void*)offsetof(vertex_t, vText));
+        //sizeof(vertex_t), (void*)(sizeof(glm::vec4) + sizeof(glm::vec4)));
+        sizeof(vertex_t), (void*)offsetof(vertex_t, vText));
         
 
     getTexture()->bind(0);//ver si está funcionando, y además si lo de hardcodear el 0 tambien

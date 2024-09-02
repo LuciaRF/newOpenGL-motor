@@ -17,7 +17,7 @@ protected:
 	vector<vertex_t>* vVertList; //Lista vértices que forman la malla
 
 	Material* material;
-	vector<unsigned int>* vTriangleIdxList; /*Lista de identificadores de 
+	vector<unsigned int> vTriangleIdxList; /*Lista de identificadores de 
 vértices, cada triplete de identificadores serán un triángulo*/
 
 public:
@@ -28,8 +28,8 @@ public:
 
 	Material* getMaterial();
 	void setMaterial(Material * mat);
-	vector<unsigned int>* getvTriangleIdxList();
-	void setvTriangleIdxList(vector<unsigned int>* vTriangleIdxList);
+	vector<unsigned int> getvTriangleIdxList();
+	void setvTriangleIdxList(vector<unsigned int> vTriangleIdxList);
 	void addTriangle(unsigned int vId1, unsigned int vId2, unsigned int vId3);
 };
 
