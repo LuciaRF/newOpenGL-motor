@@ -44,6 +44,7 @@ void System::mainLoop()
 		newTime = static_cast<float>(glfwGetTime());
 		deltaTime = newTime - lastTime;
 		lastTime = newTime;
+		glEnable(GL_DEPTH_TEST);
 
 		camera->step(deltaTime);
 
